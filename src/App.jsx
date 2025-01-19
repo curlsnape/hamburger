@@ -10,7 +10,12 @@ function App() {
     <div className="w-full h-screen bg-zinc-100">
       <nav className="h-16 flex bg-purple-200 items-center justify-between px-10">
         <h4 className="font-semibold text-lg">Logo</h4>
-        <div className="navlinks hidden font-semibold md:flex items-center gap-3"></div>
+        <div className="navlinks hidden font-semibold md:flex items-center gap-3">
+          <p>Home</p>
+          <p>Service</p>
+          <p>About</p>
+          <p>Contact</p>
+        </div>
         <button
   onClick={togglebtn}
   className="md:hidden transition-transform duration-300 ease-in-out"
