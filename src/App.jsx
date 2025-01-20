@@ -1,48 +1,62 @@
 import React, { useState } from "react";
-import { LuMenu } from "react-icons/lu";
-import { IoCloseOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+
 function App() {
   const [ismenuopen, setismenuopen] = useState(false);
-  const togglebtn = () => {
+  const menutoggler = () => {
     setismenuopen(!ismenuopen);
   };
   return (
-    <div className="w-full h-screen bg-zinc-100">
-      <nav className="h-16 flex bg-purple-200 items-center justify-between px-10">
-        <h4 className="font-semibold text-lg">Logo</h4>
-        <div className="navlinks hidden font-semibold md:flex items-center gap-3">
-          <p>Home</p>
-          <p>Service</p>
-          <p>About</p>
-          <p>Contact</p>
+    <div className="w-full h-screen bg-zinc-300">
+      <nav className="w-full flex justify-between shadow-xl fixed z-50 items-center px-5 md:px-10 h-16 text-white bg-zinc-900">
+        <h2 className="text-2xl">logo</h2>
+        <div className="navlinks hidden md:flex items-center gap-3">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/services">Services</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <button
-          onClick={togglebtn}
-          className="md:hidden transition-all duration-300 ease-in-out"
+          onClick={menutoggler}
+          className="md:hidden transition-all hover:scale-110 h-8 w-8 flex justify-center items-center delay-150 duration-300 hover:font-bold hover:bg-white rounded-full hover:text-black"
         >
           {ismenuopen ? (
-            <IoCloseOutline className="font-semibold hover:bg-purple-600 hover:text-white h-8 transition-all duration-300 hover:scale-125 w-8 p-2 rounded-full" />
+            <IoClose className="font-semibold text-lg" />
           ) : (
-            <LuMenu className="hover:bg-purple-600 hover:text-white h-8 transition-all duration-300 hover:scale-125 w-8 p-2 rounded-full" />
+            <HiOutlineMenuAlt3 className="font-semibold text-lg" />
           )}
         </button>
       </nav>
-      {ismenuopen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-lg rounded-lg px-8 py-6 transition-transform duration-300 ease-in-out transform scale-y-100 origin-top">
-          <p className="py-2 font-medium text-gray-800 hover:text-purple-600 hover:bg-gray-100 rounded-md transition-colors duration-200 cursor-pointer">
-            Home
-          </p>
-          <p className="py-2 font-medium text-gray-800 hover:text-purple-600 hover:bg-gray-100 rounded-md transition-colors duration-200 cursor-pointer">
-            Services
-          </p>
-          <p className="py-2 font-medium text-gray-800 hover:text-purple-600 hover:bg-gray-100 rounded-md transition-colors duration-200 cursor-pointer">
-            About
-          </p>
-          <p className="py-2 font-medium text-gray-800 hover:text-purple-600 hover:bg-gray-100 rounded-md transition-colors duration-200 cursor-pointer">
-            Contact
-          </p>
-        </div>
-      )}
+      {ismenuopen &&   <div className="w-full flex transition-all delay-150 absolute bg-zinc-800 text-white top-16 justify-center flex-col">
+        <Link
+          className="p-2 hover:px-4 transition-all hover:bg-zinc-700"
+          to="/"
+        >
+          Home
+        </Link>
+        <Link
+          className="p-2 hover:px-4 transition-all hover:bg-zinc-700"
+          to="/about"
+        >
+          About
+        </Link>
+        <Link
+          className="p-2 hover:px-4 transition-all hover:bg-zinc-700"
+          to="/services"
+        >
+          Services
+        </Link>
+        <Link
+          className="p-2 hover:px-4 transition-all hover:bg-zinc-700"
+          to="/contact"
+        >
+          Contact
+        </Link>
+      </div>}
+    
     </div>
   );
 }
