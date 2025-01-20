@@ -36,7 +36,7 @@ function App() {
         </button>
       </nav>
       {ismenuopen && (
-        <div className="w-full flex transition-all delay-150 absolute bg-zinc-800 text-white top-16 justify-center flex-col">
+        <div className="w-full flex transition-all delay-150 absolute z-40 bg-zinc-800 text-white top-16 justify-center flex-col">
           <Link
             className="p-2 hover:px-4 transition-all hover:bg-zinc-700"
             to="/"
